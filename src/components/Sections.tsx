@@ -132,6 +132,11 @@ export function Projects() {
             <>
               {p.image ? (
                 <Image className="proj proj-img" src={p.image} alt="" fill sizes="(max-width: 720px) 100vw, 400px" />
+              ) : p.logo ? (
+                <div className="proj proj-logo" style={{ "--accent": p.accent ?? "#e2e8f0" } as React.CSSProperties} aria-hidden="true">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.logo} alt="" />
+                </div>
               ) : (
                 <div className="proj proj-ph" aria-hidden="true">
                   [Project screenshot]

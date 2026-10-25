@@ -158,7 +158,9 @@ export type Project = {
   tags: string[]; // the first tag is shown on the card
   repoUrl: string; // "" when there is no public repo
   liveUrl: string; // "" when there is no live demo
-  image: string; // path under public/, e.g. "/projects/parchi.png"; "" shows a placeholder
+  image: string; // screenshot under public/, e.g. "/projects/parchi.png", shown full-bleed; "" shows a placeholder
+  logo?: string; // alternative to a screenshot: a logo under public/, centred on a glow
+  accent?: string; // brand colour for the glow behind the logo
 };
 
 const placeholderProject = (n: string): Project => ({
@@ -179,6 +181,8 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/manasrai1406/parchi",
     liveUrl: "",
     image: "",
+    logo: "/projects/parchi-lockup-dark.svg",
+    accent: "#8B7CF6",
   },
   {
     title: "Legacy Report Mapping",
@@ -188,6 +192,8 @@ export const projects: Project[] = [
     repoUrl: "",
     liveUrl: "",
     image: "",
+    logo: "/projects/legacy-report-mapping.svg",
+    accent: "#38BDF8",
   },
   placeholderProject("Three"),
   placeholderProject("Four"),
