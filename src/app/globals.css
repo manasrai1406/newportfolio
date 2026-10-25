@@ -403,6 +403,18 @@ input:focus, textarea:focus { outline: 2px solid var(--muted); outline-offset: 2
 .ach-card:hover .ach-num-fill { clip-path: inset(0 0 0 0); }
 .ach-card h3 { margin: 28px 0 0; font-size: 18px; line-height: 1.35; max-width: 82%; }
 .ach-card p { margin: 0; color: var(--muted); font-weight: 400; }
+/* Details wrapper: always open side by side; on phones it drops open by animating 0fr -> 1fr. */
+.ach-detail { display: grid; grid-template-rows: 1fr; flex: 1; transition: grid-template-rows .45s var(--ease-out); }
+.ach-detail-in { display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: hidden; }
+.ach-card[data-collapsible] { min-height: 0; gap: 10px; padding: 22px; transition: gap .45s var(--ease-out); }
+.ach-card[data-collapsible]:not([data-open]) { gap: 0; }
+.ach-card[data-collapsible] h3 { margin-top: 18px; max-width: none; }
+.ach-card[data-collapsible] .ach-num { font-size: 56px; }
+.ach-card[data-collapsible]:not([data-open]) .ach-detail { grid-template-rows: 0fr; }
+.ach-card[data-collapsible] .ach-detail-in > :first-child { margin-top: 2px; }
+.ach-toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 44px; padding: 0; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.ach-chev { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-2); transition: transform .45s var(--ease-out), background .3s, color .3s, border-color .3s; }
+.ach-card[data-open] .ach-chev { transform: rotate(180deg); background: var(--fg); color: var(--ink); border-color: var(--fg); }
 
 .ach-link { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; min-height: 44px; font-size: 14px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .ach-link svg { transition: transform .3s var(--ease-out); }
@@ -563,7 +575,7 @@ input:focus, textarea:focus { outline: 2px solid var(--muted); outline-offset: 2
   html { scroll-behavior: auto; }
   .gap .gl::after, .gap .gd::after, .gap .gd, .secfx::after, .sep::after { display: none; }
   .shine { display: none; }
-  .wrap, .pill, .btn, .proj, .intro .name, .kp, .tip, .catcard, .card, .cap, .cap-top, .logo::before, .open-pill, .ach-card, .ach-num-fill, .submit, .call, .mail, .call-btn, .call-btn svg, .card-badge, .mail-copy, .mail-copy span, .mail-body, .mail-inner .form, .menu-btn, .menu-word span, .menu-icon i, .menu-panel, .menu-panel li, .menu-foot, .menu-panel .arr { transition: none !important; }
+  .wrap, .pill, .btn, .proj, .intro .name, .kp, .tip, .catcard, .card, .cap, .cap-top, .logo::before, .open-pill, .ach-card, .ach-num-fill, .ach-detail, .ach-chev, .submit, .call, .mail, .call-btn, .call-btn svg, .card-badge, .mail-copy, .mail-copy span, .mail-body, .mail-inner .form, .menu-btn, .menu-word span, .menu-icon i, .menu-panel, .menu-panel li, .menu-foot, .menu-panel .arr { transition: none !important; }
   .marq, .drift, .fillt, .flyl, .flyr, .grow, .secfx, .rise2, .kbboard, .kc, .kp, .sheen, .kbstage, .kbfloat,
   .hd-fill, .hd + .sub, .intro::after, .intro .name, .shine, .sw, .shine-in, .sheen i, .rise0, .hdrin, .twinkle, .caret, .breathe,
   .orbit, .blur1, .blur3, .bob, .open-dot::after, .cap-top, .plane,

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { achievements, education, experience, href, isPlaceholder, projects, site, skills } from "@/data/site";
+import AchievementCards from "./AchievementCards";
 import ConnectCards from "./ConnectCards";
 
 /** Connector between sections: line, travelling dot, node and "02 / Skills" label. */
@@ -115,27 +116,7 @@ export function Achievements() {
     <section id="achievements" className="sec secfx ach">
       <Heading>Achievements</Heading>
       <p className="sub">Milestones worth a mention.</p>
-      <div className="grid3">
-        {achievements.map((a) => (
-          <article className="catcard ach-card rise2" data-glow key={a.number}>
-            <span className="ach-num" aria-hidden="true">
-              {a.number}
-              <span className="ach-num-fill">{a.number}</span>
-            </span>
-            <span className="tag">{a.tag}</span>
-            <h3>{a.title}</h3>
-            <p>{a.description}</p>
-            {a.url && (
-              <a className="ach-link" href={a.url} target="_blank" rel="noreferrer">
-                {a.linkLabel ?? "View"}
-                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7M8 7h9v9" />
-                </svg>
-              </a>
-            )}
-          </article>
-        ))}
-      </div>
+      <AchievementCards items={achievements} />
     </section>
   );
 }
