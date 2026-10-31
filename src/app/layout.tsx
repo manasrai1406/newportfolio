@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Unbounded } from "next/font/google";
+import localFont from "next/font/local";
 import { site } from "@/data/site";
 import "./globals.css";
 
-const head = Unbounded({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-head", display: "swap" });
-const body = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-body", display: "swap" });
+// Both fonts are stored in the project: next/font/google failed under Turbopack in dev,
+// and local files also keep builds independent of Google Fonts being reachable.
+const head = localFont({ src: "./fonts/unbounded-latin.woff2", weight: "200 900", variable: "--font-head", display: "swap" });
+const body = localFont({ src: "./fonts/space-grotesk-latin.woff2", weight: "300 700", variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
